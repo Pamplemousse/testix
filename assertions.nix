@@ -2,6 +2,8 @@ with import ./lib.nix;
 
 let
   statusFrom = result: if result then "ok" else "not ok";
+  diagnosticFrom = result: value: expectation:
+    if result then "" else "\n# Expected: ${toString_ expectation}\n# Got: ${toString_ value}";
 in
 {
   /*
@@ -17,6 +19,7 @@ in
     let
       result = value == expectation;
       status = statusFrom result;
+      diagnostic = diagnosticFrom result value expectation;
     in
-    "${status} - ${description}";
+    "${status} - ${description}${diagnostic}";
 }

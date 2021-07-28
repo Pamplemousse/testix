@@ -16,7 +16,7 @@ let
       let
         description = "description";
         result = assertEqual 43 42 description;
-        expectedResult = "not ok - description";
+        expectedResult = "not ok - description\n# Expected: 42\n# Got: 43";
       in
       assertEqual result expectedResult;
 
@@ -32,7 +32,7 @@ let
       let
         description = "description";
         result = assertEqual [ 42 ] [ ] description;
-        expectedResult = "not ok - description";
+        expectedResult = "not ok - description\n# Expected: [ ]\n# Got: [ 42 ]";
       in
       assertEqual result expectedResult;
 
@@ -48,7 +48,7 @@ let
       let
         description = "description";
         result = assertEqual { key = "value"; } { } description;
-        expectedResult = "not ok - description";
+        expectedResult = "not ok - description\n# Expected: { }\n# Got: { key = \"value\"; }";
       in
       assertEqual result expectedResult;
   };
